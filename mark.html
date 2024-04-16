@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mark.css">
+</head>
+<body>
+    <!--I need fields to input student's name, class type, rate, and time period, plus a comment field-->
+    <div class="container">
+        <div class="header">
+            <button onclick="location = 'index.html'">HOME</button>
+        </div>
+        <fieldset>
+            <h1>Please input information about the student</h1>
+            <form action="">
+                <div class="inputs">
+                    <label for="name">Name </label><input type="text" id="name" placeholder="Daniel">
+                    <label for="type">Type of Class </label><select name="class type" id="type">
+                        <option value="NS">-</option>
+                        <option value="group">Group Class</option>
+                        <option value="solo">Solo Class</option>
+                        <option value="grammar">Grammar Class</option>
+                    </select>
+                    <label for="rate">Rate </label><input type="number" id="rate" placeholder="60">
+                    <label for="period">Time Period(in hours) </label><input type="number" id="period" placeholder="1.5">
+                </div>
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>

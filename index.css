@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.buttons{
+    margin-top: 5vh;
+}
+
+button{
+    height: 5vh;
+    background-color: blue;
+    color: yellow;
+    border-color: yellow;
+    border-width: 0.5vh;
+    border-radius: 1vh;
+}
