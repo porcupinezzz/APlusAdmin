@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><img src="https://lh3.googleusercontent.com/p/AF1QipPnPuuroc5tF2AE4J7ngGRhBc14R1qsu7gEXdz0=s1360-w1360-h1020" alt="A+ Reading Lab Logo"></div>
+        <div class="buttons">
+            <button class="nav-button" data-target="/mark">Mark Attendance</button>
+            <button class="nav-button" data-target="/view">View Attendance</button>
+            <button class="nav-button" data-target="/amend">Amend Attendance</button>
+            <button class="nav-button" data-target="/generate">Generate Invoices</button>
+            <button class="nav-button" data-target="/update">Update Payment Status</button>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.nav-button').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                const target = event.target.getAttribute('data-target');
+                location.replace(target);
+            });
+        });
+    </script>
+</body>
+</html>
