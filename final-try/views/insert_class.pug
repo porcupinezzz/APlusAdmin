@@ -1,0 +1,31 @@
+extends layout 
+
+block content 
+    form(action = "/classes/insert" method="POST")
+        .studentsbox
+            label(for="studentinclass") Students In Class: 
+            br
+            for students in marked_students
+                label(for=students._id) #{students.name}: ID (do not touch) 
+                input(id=students._id name="studentsid" value=students._id) 
+                label(for=students._id) &nbsp; Rate 
+                input(id=students._id name="studentsrate" value=rate) 
+                label(for=students._id) &nbsp; Period 
+                input(id=students._id name="studentsperiod" value=period) 
+                br
+        .classtypebox
+            label(for="classtype") Type of Class:
+            for classtype in classtypes
+                if classtype.checked
+                    input.checkbox-input(type='checkbox', name='classtype', id=classtype.name, value=classtype._id, checked)
+                else
+                    input.checkbox-input(type='checkbox', name='classtype', id=classtype.name, value=classtype._id)
+                label(for=classtype.name) &nbsp;#{classtype.name} 
+        .datebox 
+            label(for="classdate") Date: 
+            input(type="date" name = "date" id= "classdate")
+        button(type="submit") Insert Class
+
+    if errors
+        for error in errors 
+            li #{error}

@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header.navbar 
+      - const buttons = [{name: 'Mark Attendance', path: "mark"}, {name: 'View Attendance', path : "view"}, {name:'Amend Attendance', path:"amend"}, {name: 'Generate Invoices', path: "gen"}, {name:'Update Payment Status', path: "update"}]
+      each name in buttons
+        button(id = name.path) #{name.name}
+      script. 
+        const names = [{'name': 'Mark Attendance', 'path': "mark"}, {'name': 'View Attendance', 'path' : "view"}, {'name':'Amend Attendance', 'path':"amend"}, {'name': 'Generate Invoices', 'path': "gen"}, {'name':'Update Payment Status', 'path': "update"}]
+        for (let i = 0; i < names.length; i++){
+          let paths = names[i]['path']
+          document.getElementById(paths).addEventListener("click", () => {
+            location.replace("/" + paths)
+          })
+        }
+    block content

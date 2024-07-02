@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  - const buttonnames = [{name: 'Mark Attendance', path: "mark"}, {name: 'View Attendance', path : "view"}, {name:'Amend Attendance', path:"amend"}, {name: 'Generate Invoices', path: "gen"}, {name:'Update Payment Status', path: "update"}]
+  h1= title
+  p Welcome to #{title}
+  each name in buttonnames
+    button(id = name.path) #{name.name}
+  script. 
+    document.querySelector(".navbar").innerHTML = ''
+    const button = [{'name': 'Mark Attendance', 'path': "mark"}, {'name': 'View Attendance', 'path' : "view"}, {'name':'Amend Attendance', 'path':"amend"}, {'name': 'Generate Invoices', 'path': "gen"}, {'name':'Update Payment Status', 'path': "update"}]
+    for (let i = 0; i < button.length; i++){
+      let paths = button[i]['path']
+      document.getElementById(paths).addEventListener("click", () => {
+        location.replace("/" + paths)
+      })
+    }

@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    h1 Amend Attendance
+    .container 
+        fieldset 
+            h1 To find the records you need, input the filter fields
+            form(action="/amend" method="POST")
+                .inputs 
+                    label(for = "name") Name 
+                    input(type = "text" id = "name" name= "name" placeholder= "Daniel")
+                    label(for = "type")  Type of Class  
+                    select(name="type" id = "type")
+                        -const classType = classRefill||"-"
+                        -const classes = ["-", "Group", "Solo"]
+                        each classing in classes
+                            if (classing == '-')
+                                if (classing == classType)
+                                    option(value=classing selected disabled hidden) #{classing}
+                                else
+                                    option(value=classing disabled hidden) #{classing}     
+                            else if (classing == classType)
+                                option(value=classing selected) #{classing}
+                            else
+                                option(value=classing) #{classing}                         
+                    label(for="date") Date of Lesson
+                    input(type = "date" id ="date" name = "date" value=dateRefill||"")
+                    label(for="rate")  Rate per Hour 
+                    input(type = "number" id="rate" name="rate" value=rateRefill||"" placeholder= 60)  
+                    label(for = "period")  Period of Lesson 
+                    input(type="number" id="period" name="period" value=periodRefill||"" placeholder = 1.5) 
+                    button.submit(type = "submit" ) ADD ON
+                    button.reset(type = "reset") CLEAR
+            if (includeTable)       
+                .table Attendance Sheet
+                    .tr 
+                        .th To Amend?
+                        .th Name         
+                        .th Class Type   
+                        .th Time Period 
+                        .th Rate 
+                        .th Date
+                    for entry in attendanceRecords    
+                        .tr 
+                            .td 
+                                input(type="checkbox" name = entry["name"]+entry["date"])
+                            .td #{entry["name"]}
+                            .td #{entry["type"]} Class
+                            .td #{entry["period"]} 
+                            .td #{entry["rate"]} 
+                            .td #{entry["date"]}
+                            
+                

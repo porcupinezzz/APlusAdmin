@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    if (exists)
+        h1 Student Detail 
+        .studentbox 
+            ul 
+                li Full Name: #{student.name}
+                li Grade Level: #{student.grade} 
+                li Siblings: 
+                    for sibling in student.siblings 
+                        a(href=sibling.url) #{sibling.name}
+                li Outstanding Bills: 
+                    for bill in student.outstanding
+                        a(href=bill.url) #{bill._id}
+                li Classes Taken:
+                    for classinstance in student.classes_taken 
+                        a(href=classinstance.url) #{classinstance._id}
+    else 
+        h1 ID doesn't exist, the ID you attempted to key in was #{attemptedID}, please retry another ID.

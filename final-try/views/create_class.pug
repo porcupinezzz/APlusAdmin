@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+    form(action = "/classes/createnew" method="POST")
+        .studentsbox
+            label(for="students") Students In Class:
+            br
+            for students in current_students
+                if students.checked
+                    input.checkbox-input(type='checkbox', name='students', id=students._id, value=students._id, checked)
+                else
+                    input.checkbox-input(type='checkbox', name='students', id=students._id, value=students._id)
+                label(for=students._id) &nbsp;#{students.name} 
+        .classtypebox
+            label(for="classtype") Type of Class:
+            br
+            for classtype in classtypes
+                if classtype.checked
+                    input.checkbox-input(type='checkbox', name='classtype', id=classtype.name, value=classtype.name, checked)
+                else
+                    input.checkbox-input(type='checkbox', name='classtype', id=classtype.name, value=classtype.name)
+                label(for=classtype.name) &nbsp;#{classtype.name} 
+        label(for="period") Period of Class: &nbsp;
+        input(name="period" id = "period")
+        br
+        label(for = "rate") Rate per hour:  &nbsp; &nbsp;
+        input(name = "rate" id="rate")
+        br
+        button(type="submit") Next Step
+
+    if errors
+        for error in errors 
+            li #{error}

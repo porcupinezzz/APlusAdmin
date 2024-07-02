@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    if (exists)
+        h1 Class Detail 
+        .classbox 
+            ul 
+                li Class ID: #{classInstance._id} 
+                li Date: #{classInstance.date}
+                li Class Type: 
+                    for student in classInstance.students 
+                        a(href=student.url) #{student.name}
+                        p Period: #{student.period} Rate: #{student.rate}
+                if (classInstance.fullypaid)
+                    li Fully Paid: Yes
+                else 
+                    li Fully Paid: No
+
+    else 
+        h1 Class type doesn't exist, the type you attempted to key in was #{attemptedClass}, please retry another class type.

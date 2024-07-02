@@ -1,0 +1,35 @@
+extends layout 
+
+block content
+    br
+    ul      
+        li If you click generate invoices without any input except directory name, it will automatically generate all unpaid invoices.
+        li If you select any fields, it will generate invoices based on your filter 
+        li If you select a student with siblings, it will generate the invoices with siblings included as well even if you did not select them
+
+    form(action = "/invoice/createnew" method="POST")
+        label(for="students") Students:
+        br
+        for students in current_students
+            if students.checked
+              input.checkbox-input(type='checkbox', name='students', id=students._id, value=students._id, checked)
+            else
+              input.checkbox-input(type='checkbox', name='students', id=students._id, value=students._id)
+            label(for=students._id) &nbsp;#{students.first_name} 
+        br
+        br
+        label(for="startingdate") Starting Date 
+        input(type="date" name="startingdate" id="startingdate")
+        label(for="endingdate") Ending Date 
+        input(type="date" name="endingdate" id="endingdate")
+        br
+        br
+        label(for = "directoryName") Directory Name 
+        input(type = "text" name="directoryName" id="directoryName" required)
+        br
+        br
+        button(type="submit") Generate Invoice(s)
+
+    if errors
+        for error in errors 
+            li #{error}

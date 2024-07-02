@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if (outstanding)
+    p There are #{count_outstanding} invoices.
+  else 
+    p There are no outstanding invoices.

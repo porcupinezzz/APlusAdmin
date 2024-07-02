@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+    if (exists)
+        h1 Class Type Detail 
+        .classtypebox 
+            ul 
+                li(class = classtype.name) Class Type: #{classtype.name} 
+                li Classes in Type: 
+                    if classtype.classes
+                        each classinstance in classtype.classes  
+                            a(href=classinstance.url) #{classinstance._id}
+                    else 
+                      p None
+
+
+
+    else 
+        h1 Class type doesn't exist, the type you attempted to key in was #{attemptedClassType}, please retry another class type.

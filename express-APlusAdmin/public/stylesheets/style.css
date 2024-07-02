@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.navbar > button{
+  font-size: 5vh;
+  color: white;
+  background-color: blue;
+  margin-right: 2vh;
+}
+
+.navbar{
+  margin-bottom: 2vh;
+}
+
+table, tbody, tr, td, th{
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-spacing: 0;
+}
+
+.tr{
+  display: flex;
+  width: 48vw;
+}
+
+.th{
+  font-weight: bold;
+  text-align: center;
+}
+
+.th, .td{
+  width: 8vw;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.table{
+  display: flex;
+  flex-direction: column;
+}
+
+
+

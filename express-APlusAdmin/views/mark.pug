@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    h1 Mark Attendance
+    .container 
+        fieldset 
+            h1 Please input information about the student
+            form(action="/mark" method="POST")
+                .inputs 
+                    label(for = "first_name") First Name 
+                    input(type = "text" id = "first_name" name= "first_name" placeholder= "Daniel")
+                    label(for = "last_name") Last Name 
+                    input(type = "text" id = "last_name" name= "last_name" placeholder= "Lee")
+                    label(for = "type")  Type of Class  
+                    select(name="type" id = "type")
+                        -const classType = classRefill||"-"
+                        -const classes = ["-", "Group", "Solo"]
+                        each classing in classes
+                            if (classing == '-')
+                                if (classing == classType)
+                                    option(value=classing selected disabled hidden) #{classing}
+                                else
+                                    option(value=classing disabled hidden) #{classing}     
+                            else if (classing == classType)
+                                option(value=classing selected) #{classing}
+                            else
+                                option(value=classing) #{classing}                         
+                    label(for="rate")  Rate per Hour 
+                    input(type = "number" id="rate" name="rate" value=rateRefill||"" placeholder= 60)  
+                    label(for = "period")  Period of Lesson 
+                    input(type="number" id="period" name="period" value=periodRefill||"" placeholder = 1.5) 
+                    label(for="date") Date of Lesson
+                    input(type = "date" id ="date" name = "date" value=dateRefill||new Date().toLocaleDateString('en-CA'))
+                    button.submit(type = "submit" ) SUBMIT
+                    button.reset(type = "reset") CLEAR
+            if (includeTable)       
+                table Last Added Student
+                    tr 
+                        th Name         
+                        th Class Type   
+                        th Rate 
+                        th Time Period
+                        th Date
+                    for entry in entries    
+                        tr 
+                            td #{entry["name"]}
+                            td #{entry["type"]} Class
+                            td #{entry["period"]} 
+                            td #{entry["rate"]} 
+                            td #{entry["date"]}
+                p See any errors? Fix it by clicking the amend attendance link above.
+                    
